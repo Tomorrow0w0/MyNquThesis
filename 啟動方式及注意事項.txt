@@ -1,0 +1,111 @@
+安裝node.js v8.10.0以上
+
+在收發室端、學生端、介紹網頁目入底下
+打開終端機(shit+右鍵)都先執行npm i，安裝套件
+
+收發室端、學生端及介紹網頁:
+
+執行npm run dev，透過以下網址可預覽網頁
+收發室端: http://localhost:8086
+學生端: http://localhost:8082
+介紹網頁: http://localhost:8181
+CTRL+C終止預覽
+
+執行npm run build，則會打包網頁
+每次你有更改網頁內容都要重新打包喔!
+會產生出dist目錄，裡面會有index.html及static文件夾
+可將index.html及static文件夾放在自己想要架的地方
+
+我是架在firebase hosting(雲端架站)
+收發室端:
+https://mailroom-ba90c.firebaseapp.com/
+學生端:
+https://stumanager-a4e0e.firebaseapp.com/
+介紹網頁:
+https://finalprojectprofile.firebaseapp.com/
+
+如要架在自己的firenase專案請更改.firebaserc，用記事本開
+{
+  "projects": {
+    "default": "projectId(自己專案的id)"
+  }
+}
+
+public目錄放ndex.html及static文件夾
+在public目錄底下打開終端機(shit+右鍵)執行firebase deploy
+就會架在你自己的firebase hosting
+
+如何將學生端及收發室端改成自己的firebase資料庫(firestore)?
+請在src\components\FirebaseLink\FirebaseConfig.js裡
+更改成自己的Firebase金鑰
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+
+樹梅派server程式:
+先有一台初始化設定好的樹梅派
+打開終端機
+依序執行
+sudo apt-get update
+sudo apt-get dist-upgrade
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+以上是在樹梅派安裝node.js
+檢查node.js版本執行node -v 查看是否是v8.10.0
+接著
+打該pi底下目錄
+把全部程式放進去
+Public文件夾放index.html、jsQR.js、main.js
+其他全放Public外面
+打開終端機執行 npm i，安裝套件完
+執行node server.js，啟動成功
+瀏覽器打開 http://localhost:3000
+記得允許開啟相機
+
+若你試了老半天都啟動不了
+看安裝的套件.txt
+依序執行命令行安裝套件再執行node server.js
+
+如何將樹梅派server程式改成自己的firebase資料庫(firestore)?
+打開你的Firebase控制台
+(Project Overview旁的齒輪)設定->專案設定->服務帳戶裡
+底下有藍色按鈕(產生新的私密金鑰)按下去->再按產生金鑰
+會下載一個.json檔
+重新命名成DBkey.json
+剪下取代原本的DBkey.json
+再次執行node server.js
+就替換成你的firebase資料庫
+
+server.js裡的三竹簡訊功能
+請參考以下文章
+https://ccw1986.blogspot.com/2018/02/nodejs.html
+
+constructor(username, password) {
+        this.username = "0422782805";
+        this.password = "Nqu110410545";
+    }
+
+這是我申請的測試帳號密碼，裡面的額度用完就沒有了
+每封簡訊0.86元，可再以下網址登入查看剩餘額度
+三竹簡訊三站:
+https://msg2.mitake.com.tw/SMS/Home.jsp?t=1519109439596FDDE6CD1EB896E19D4B743073986A64A
+
+如何重新申請一組帳戶?
+請用gmail至信到 hung_ta_chen@mitake.com.tw
+表明身分及自己是大學生專題要使用
+
+留了一份收發室DB模擬數據.json
+給需要自架資料庫的人使用
+
+
+
+
+
+
+
+
+
+

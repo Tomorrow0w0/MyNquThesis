@@ -1,0 +1,9 @@
+npm init
+npm install koa
+npm install koa-router
+npm install koa-static
+npm install --save firebase-admin
+npm install onoff
+npm install node-pre-gyp
+npm install dotenv --save
+npm install request
